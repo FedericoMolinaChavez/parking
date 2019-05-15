@@ -1,0 +1,42 @@
+<h2>Parking form</h2>
+<p>
+    <% if (parking) { %>
+        New parking
+    <% } else { %>
+        Edit parking
+    <% } %>
+</p>
+<% if (flash) { %>
+    <p>{flash}</p>
+<% } %>
+<div class="content">
+    <div>
+        <form name="parking" method="<% if (parking) { %>put<% } else { %>post<% } %>"
+            action="/parkings <% if (parking) { %>/<%= parking._id %><% } %>">
+            <div class="row">
+                <label>Name</label>
+                <input type="text" name="name" value="<%= parking.name %>">
+            </div>
+            <div class="row">
+                <label>Id</label>
+                <input type="text" name="id" value="<%= parking.id %>">
+            </div>
+            <div class="row">
+                <label>Account</label>
+                <input type="text" name="account" value="<%= parking.account %>">
+            </div>
+            <div class="row">
+                <label>MonthlyMoney</label>
+                <input type="text" name="monthlyMoney" value="<%= parking.monthlyMoney %>">
+            </div>
+            <div class="row controls">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <% if (parking) {%>
+            <form method="delete" action="/parkingss<%= parking._id %>">
+                <input type="submit" value="Delete"/>
+            </form>
+        <% } %>
+    </div>
+</div>

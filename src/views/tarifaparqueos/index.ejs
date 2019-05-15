@@ -1,0 +1,33 @@
+<h2>Tarifaparqueos</h2>
+<p>View tarifaparqueos or <a href="edit.html">add</a> a tarifaparqueo.</p>
+<% if (locals.flash) { %>
+    <p><%= flash %></p>
+<% } %>
+<ul>
+    <li class="header">
+        <span class="field">Idparqueadero</span>
+        <span class="field">Tarifahora</span>
+        <span class="field">Tarifafracción</span>
+        <span class="field">Tarifaminuto</span>
+        <span class="field">Tarifaespecial</span>
+        <span class="field">Tarifadía</span>
+        <span class="field">Tarifames</span>
+        <span class="field">Tarifasemana</span>
+        <span class="field">Actions</span>
+    </li>
+    <% for(var i=0; i<tarifaparqueos.length; i++) {%>
+            <li class="row">
+                <span class="field"><%= tarifaparqueos[i]['idParqueadero'] %></span>
+                <span class="field"><%= tarifaparqueos[i]['tarifaHora'] %></span>
+                <span class="field"><%= tarifaparqueos[i]['tarifaFracción'] %></span>
+                <span class="field"><%= tarifaparqueos[i]['tarifaminuto'] %></span>
+                <span class="field"><%= tarifaparqueos[i]['tarifaEspecial'] %></span>
+                <span class="field"><%= tarifaparqueos[i]['tarifaDía'] %></span>
+                <span class="field"><%= tarifaparqueos[i]['tarifaMes'] %></span>
+                <span class="field"><%= tarifaparqueos[i]['tarifaSemana'] %></span>
+                <span class="field">
+                    <a href="<%= tarifaparqueos[i]._id %>" >tarifaparqueos</a>
+                </span>
+            </li>
+    <% } %>
+</ul>

@@ -1,0 +1,58 @@
+<h2>Tarifaparqueo form</h2>
+<p>
+    <% if (tarifaparqueo) { %>
+        New tarifaparqueo
+    <% } else { %>
+        Edit tarifaparqueo
+    <% } %>
+</p>
+<% if (flash) { %>
+    <p>{flash}</p>
+<% } %>
+<div class="content">
+    <div>
+        <form name="tarifaparqueo" method="<% if (tarifaparqueo) { %>put<% } else { %>post<% } %>"
+            action="/tarifaparqueos <% if (tarifaparqueo) { %>/<%= tarifaparqueo._id %><% } %>">
+            <div class="row">
+                <label>IdParqueadero</label>
+                <input type="text" name="idParqueadero" value="<%= tarifaparqueo.idParqueadero %>">
+            </div>
+            <div class="row">
+                <label>TarifaHora</label>
+                <input type="text" name="tarifaHora" value="<%= tarifaparqueo.tarifaHora %>">
+            </div>
+            <div class="row">
+                <label>TarifaFracción</label>
+                <input type="text" name="tarifaFracción" value="<%= tarifaparqueo.tarifaFracción %>">
+            </div>
+            <div class="row">
+                <label>Tarifaminuto</label>
+                <input type="text" name="tarifaminuto" value="<%= tarifaparqueo.tarifaminuto %>">
+            </div>
+            <div class="row">
+                <label>TarifaEspecial</label>
+                <input type="text" name="tarifaEspecial" value="<%= tarifaparqueo.tarifaEspecial %>">
+            </div>
+            <div class="row">
+                <label>TarifaDía</label>
+                <input type="text" name="tarifaDía" value="<%= tarifaparqueo.tarifaDía %>">
+            </div>
+            <div class="row">
+                <label>TarifaMes</label>
+                <input type="text" name="tarifaMes" value="<%= tarifaparqueo.tarifaMes %>">
+            </div>
+            <div class="row">
+                <label>TarifaSemana</label>
+                <input type="text" name="tarifaSemana" value="<%= tarifaparqueo.tarifaSemana %>">
+            </div>
+            <div class="row controls">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <% if (tarifaparqueo) {%>
+            <form method="delete" action="/tarifaparqueoss<%= tarifaparqueo._id %>">
+                <input type="submit" value="Delete"/>
+            </form>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<h2>Current form</h2>
+<p>
+    <% if (current) { %>
+        New current
+    <% } else { %>
+        Edit current
+    <% } %>
+</p>
+<% if (flash) { %>
+    <p>{flash}</p>
+<% } %>
+<div class="content">
+    <div>
+        <form name="current" method="<% if (current) { %>put<% } else { %>post<% } %>"
+            action="/currents <% if (current) { %>/<%= current._id %><% } %>">
+            <div class="row">
+                <label>Id</label>
+                <input type="text" name="id" value="<%= current.id %>">
+            </div>
+            <div class="row">
+                <label>Placa</label>
+                <input type="text" name="placa" value="<%= current.placa %>">
+            </div>
+            <div class="row">
+                <label>FechaEntrada</label>
+                <input type="text" name="fechaEntrada" value="<%= current.fechaEntrada %>">
+            </div>
+            <div class="row">
+                <label>Payment</label>
+                <input type="text" name="payment" value="<%= current.payment %>">
+            </div>
+            <div class="row">
+                <label>Payed</label>
+                <input type="text" name="payed" value="<%= current.payed %>">
+            </div>
+            <div class="row">
+                <label>IdParqueadero</label>
+                <input type="text" name="idParqueadero" value="<%= current.idParqueadero %>">
+            </div>
+            <div class="row controls">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <% if (current) {%>
+            <form method="delete" action="/currentss<%= current._id %>">
+                <input type="submit" value="Delete"/>
+            </form>
+        <% } %>
+    </div>
+</div>

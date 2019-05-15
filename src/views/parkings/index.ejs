@@ -1,0 +1,25 @@
+<h2>Parkings</h2>
+<p>View parkings or <a href="edit.html">add</a> a parking.</p>
+<% if (locals.flash) { %>
+    <p><%= flash %></p>
+<% } %>
+<ul>
+    <li class="header">
+        <span class="field">Name</span>
+        <span class="field">Id</span>
+        <span class="field">Account</span>
+        <span class="field">Monthlymoney</span>
+        <span class="field">Actions</span>
+    </li>
+    <% for(var i=0; i<parkings.length; i++) {%>
+            <li class="row">
+                <span class="field"><%= parkings[i]['name'] %></span>
+                <span class="field"><%= parkings[i]['id'] %></span>
+                <span class="field"><%= parkings[i]['account'] %></span>
+                <span class="field"><%= parkings[i]['monthlyMoney'] %></span>
+                <span class="field">
+                    <a href="<%= parkings[i]._id %>" >parkings</a>
+                </span>
+            </li>
+    <% } %>
+</ul>
