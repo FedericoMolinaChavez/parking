@@ -168,4 +168,4 @@ currents.delete('/:id', function(req, res) {
     });
 });
 
-module.exports.currents = currents;
+module.exports = currents;

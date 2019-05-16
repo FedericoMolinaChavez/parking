@@ -1,30 +1,32 @@
-let timeCalc = require('./TimeCalc')
+let {
+    TimeCalc
+} = require('./TimeCalc')
 
 const expensesCalc = (current, tarifaparqueo) => {
-    tarifatypes = [0,0,0,0,0,0]
-    if(tarifaparqueo.tarifaHora != 0){
-        tarifatypes[0] = 1
-    }
-    if(tarifaparqueo.tarifaFracción){
-        tarifatypes[1] = 1
-    }
-    if(tarifaparqueo.tarifaminuto){
-        tarifatypes[2] = 1
-    }
-    if( tarifaparqueo.tarifaDía){
-        tarifatypes[3] = 1
-    }
-    if(tarifaparqueo.tarifaMes){
-        tarifatypes[4] = 1
-    }
-    if(tarifaparqueo.tarifaSemana){
-        tarifatypes[5] = 1
-    }
-    calcDate = new Date()
-    difference = timeCalc(current.fechaEntrada,calcDate)
+    calcDate = new Date(current.fechaEntrada.getTime() + 10000000)
+    difference = TimeCalc(current.fechaEntrada, calcDate)
+    console.log(difference)
     totalPaymentRequirement = 0
-    
-   // tarifaEspecial: 'Number',
-   
+    if (difference.minutos > 0) {
+        console.log("algo")
+        totalPaymentRequirement = (difference.meses * tarifaparqueo.tarifaMes) + (difference.dias * tarifaparqueo.tarifaDia)  + (difference.horas * tarifaparqueo.tarifaHora) + (tarifaparqueo.tarifaFraccion) + (difference.minutos * tarifaparqueo.tarifaMinuto)
+
+    } else {
+        totalPaymentRequirement = (difference.meses * tarifaparqueo.tarifaMes) + (difference.horas * tarifaparqueo.tarifaHora)+ (difference.dias * tarifaparqueo.tarifaDia) 
+    }
+    return totalPaymentRequirement
+    // tarifaEspecial: 'Number',
 }
-module.exports.expensesCalc = expensesCalc
+tarifaParqueo = {
+    tarifaMes : 0,
+    tarifaHora: 500,
+    tarifaFraccion: 100,
+    tarifaDia: 0,
+    tarifaMinuto: 0,
+    tarifaMes: 0
+}
+current = {
+    fechaEntrada: new Date()
+}
+//console.log(expensesCalc(current, tarifaParqueo))
+module.exports = expensesCalc

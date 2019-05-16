@@ -19,7 +19,7 @@ users.get('/', function(req, res) {
             if(err) {
                 return res.send('500: Internal Server Error', 500);
             }
-        return res.render('users/index', {users: users});
+        return res.json({users: users});
         }
     });
 });
@@ -47,7 +47,7 @@ users.post('/', function(req, res) {
             if(err) {
                 return res.send('500: Internal Server Error', 500);
             }
-            return res.render('users/edit', {user: user});
+            return res.send('todo bien');
         }
     });
 });
@@ -74,7 +74,7 @@ users.get('/:id', function(req, res) {
             if(!user) {
                 return res.end('No such user');
             }
-            return res.render('users/edit', {user: user, flash: 'Created.'});
+            return res.json({user: user});
         }
     });
 });
@@ -162,4 +162,4 @@ users.delete('/:id', function(req, res) {
     });
 });
 
-module.exports.users = users;
+module.exports = users;

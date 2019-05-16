@@ -162,4 +162,4 @@ parkings.delete('/:id', function(req, res) {
     });
 });
 
-module.exports.parkings = parkings;
+module.exports = parkings;

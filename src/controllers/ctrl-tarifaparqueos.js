@@ -174,4 +174,4 @@ tarifaparqueos.delete('/:id', function(req, res) {
     });
 });
 
-module.exports.tarifaparqueos = tarifaparqueos;
+module.exports = tarifaparqueos;
